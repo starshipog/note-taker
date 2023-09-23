@@ -6,7 +6,7 @@ const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 notes.get('/', (req, res) => {
 
   // Logic for sending all the content of db/diagnostics.json
-  readFromFile('./db/json').then((data) =>
+  readFromFile('./db/db/json').then((data) =>
     res.json(JSON.parse(data))
   );
 });
@@ -24,7 +24,7 @@ notes.post('/', (req, res) => {
   };
 
   if (!isValid) {
-    readAndAppend(payload, './db/json');
+    readAndAppend(payload, './db/db/json');
     res.json(`Note added`);
   } else {
     res.json({
