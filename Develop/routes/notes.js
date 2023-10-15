@@ -6,7 +6,7 @@ const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 notes.get('/', (req, res) => {
 
   // Logic for sending all the content of db/diagnostics.json
-  readFromFile('./db/db/json').then((data) =>
+  readFromFile('./db/db.json').then((data) =>
     res.json(JSON.parse(data))
   );
 });
@@ -24,7 +24,7 @@ notes.post('/', (req, res) => {
   };
 
   if (!isValid) {
-    readAndAppend(payload, './db/db/json');
+    readAndAppend(payload, './db/db.json');
     res.json(`Note added`);
   } else {
     res.json({
@@ -33,5 +33,24 @@ notes.post('/', (req, res) => {
     });
   }
 });
+
+
+// delete a note
+
+notes.delete('/:id', async (req, res) => {
+  try {
+    const noteData = await notes.destroy({
+      where: { id: req.params.id }
+    });
+    if (!noteData) {
+      res.status(404).json({ message: 'No note with this id!' });
+      return;
+    }
+    res.status(200).json(noteData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = notes;

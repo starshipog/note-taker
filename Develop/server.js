@@ -28,7 +28,7 @@ app.use(express.static('public'));
 // GET /notes should return the notes.html file.
 // GET Route for notes page
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/pages/notes.html'))
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 
@@ -36,7 +36,7 @@ app.get('/notes', (req, res) =>
 // GET * should return the index.html file.
 // Wildcard route to direct users to a 404 page
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/pages/index.html'))
+  res.sendFile(path.join(__dirname, 'public/index.html'))
 );
 
 
