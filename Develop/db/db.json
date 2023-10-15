@@ -1,6 +1,18 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title": "Test Title",
+        "text": "Test text"
+    },
+    {
+        "time": 1697389202955,
+        "error_id": "b4c3a121-b744-46ca-8a72-21dc22499d56"
+    },
+    {
+        "time": 1697389285599,
+        "error_id": "cf783ba8-fa09-4621-ac89-e756504a526f"
+    },
+    {
+        "time": 1697389322923,
+        "error_id": "b4121660-b9b9-4f38-a09c-0b6f6847cbef"
     }
 ]
