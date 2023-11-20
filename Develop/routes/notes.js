@@ -12,27 +12,48 @@ notes.get('/', (req, res) => {
 });
 
 // POST Route for a error logging
-notes.post('/', (req, res) => {
+// fixed code
+notes.post("/", (req, res) => {
   console.log(req.body);
-
   const { isValid, errors } = req.body;
-
   const payload = {
-    time: Date.now(),
-    error_id: uuidv4(),
-    errors,
+    title: req.body.title,
+    text: req.body.text,
+    id: uuidv4(),
   };
-
   if (!isValid) {
-    readAndAppend(payload, './db/db.json');
+    readAndAppend(payload, "./db/db.json");
     res.json(`Note added`);
   } else {
     res.json({
-      message: 'Object is valid, not logging. Check front end implementation',
+      message: "Object is valid, not logging. Check front end implementation",
       error_id: payload.error_id,
     });
   }
 });
+
+// my first code
+// notes.post('/', (req, res) => {
+//   console.log(req.body);
+
+//   const { isValid, errors } = req.body;
+
+//   const payload = {
+//     time: Date.now(),
+//     error_id: uuidv4(),
+//     errors,
+//   };
+
+//   if (!isValid) {
+//     readAndAppend(payload, './db/db.json');
+//     res.json(`Note added`);
+//   } else {
+//     res.json({
+//       message: 'Object is valid, not logging. Check front end implementation',
+//       error_id: payload.error_id,
+//     });
+//   }
+// });
 
 
 // delete a note
